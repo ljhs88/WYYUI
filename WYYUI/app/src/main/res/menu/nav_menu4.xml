@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/my_list"
+            android:icon="@drawable/my_list"
+            android:title="我的订单"/>
+
+        <item
+            android:id="@+id/coupons"
+            android:icon="@drawable/coupons"
+            android:title="云村有票"/>
+
+        <item
+            android:id="@+id/my_service"
+            android:icon="@drawable/my_service"
+            android:title="我的客服"/>
+
+        <item
+            android:id="@+id/share"
+            android:icon="@drawable/share"
+            android:title="分享网易云音乐"/>
+
+        <item
+            android:id="@+id/about"
+            android:icon="@drawable/about"
+            android:title="关于"/>
+
+    </group>
+
+</menu>

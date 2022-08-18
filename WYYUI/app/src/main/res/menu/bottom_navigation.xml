@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/find"
+        android:icon="@drawable/find"
+        android:title="发现" />
+
+    <item
+        android:id="@+id/pod_cast"
+        android:icon="@drawable/pod_cast"
+        android:title="播客"/>
+
+    <item
+        android:id="@+id/my"
+        android:icon="@drawable/my"
+        android:title="我的"/>
+
+    <item
+        android:id="@+id/attention"
+        android:icon="@drawable/attention"
+        android:title="关注"/>
+
+    <item
+        android:id="@+id/cloudCountrySide"
+        android:icon="@drawable/cloudcountryside"
+        android:title="云村"/>
+
+</menu>

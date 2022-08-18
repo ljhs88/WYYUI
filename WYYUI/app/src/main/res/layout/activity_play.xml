@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".playActivity">
+
+    <TextView
+        android:id="@+id/singName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="10dp"
+        android:text="Stack it up"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:textSize="20dp"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/singName"
+        app:layout_constraintBottom_toTopOf="@+id/start_button"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginEnd="80dp">
+
+        <TextView
+            android:id="@+id/sing_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/white"
+            android:textSize="13dp"
+            android:text=""
+            android:gravity="center"
+            android:maxLines="100"
+            />
+
+    </androidx.core.widget.NestedScrollView>
+
+    <Button
+        android:id="@+id/start_button"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@drawable/start"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="20dp"/>
+
+    <Button
+        android:id="@+id/up_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintTop_toTopOf="@+id/start_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/start_button"
+        app:layout_constraintBottom_toBottomOf="@+id/start_button"
+        android:background="@drawable/up"
+        />
+
+    <Button
+        android:id="@+id/down_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintTop_toTopOf="@+id/start_button"
+        app:layout_constraintStart_toEndOf="@+id/start_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/start_button"
+        android:background="@drawable/down"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

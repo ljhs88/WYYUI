@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/setting"
+            android:icon="@drawable/setting"
+            android:title="设置"/>
+
+        <item
+            android:id="@+id/night_model"
+            android:icon="@drawable/night_model"
+            android:title="夜间模式"/>
+
+        <item
+            android:id="@+id/time_closure"
+            android:icon="@drawable/timing_closure"
+            android:title="定时关闭"/>
+
+        <item
+            android:id="@+id/fashion"
+            android:icon="@drawable/fashion"
+            android:title="个性装扮"/>
+
+        <item
+            android:id="@+id/listen_download"
+            android:icon="@drawable/listen_download"
+            android:title="边听边存"/>
+
+        <item
+            android:id="@+id/free"
+            android:icon="@drawable/free"
+            android:title="在线听歌免流量"/>
+
+        <item
+            android:id="@+id/music_black"
+            android:icon="@drawable/music_black"
+            android:title="音乐黑名单"/>
+
+        <item
+            android:id="@+id/safe_model"
+            android:icon="@drawable/safe_model"
+            android:title="青少年模式"/>
+
+        <item
+            android:id="@+id/ticket"
+            android:icon="@drawable/ticket"
+            android:title="音乐闹钟"/>
+
+    </group>
+
+</menu>

@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">WYYUI</string>
+    <drawable name="select">@color/white</drawable>
+    <drawable name="not_select">#AAAC</drawable>
+</resources>
