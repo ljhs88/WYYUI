@@ -58,8 +58,8 @@ public class musicActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 music music = musicList.get(i);
-                List<String> musicName = new ArrayList<>();
-                List<String> musicUrl = new ArrayList<>();
+                ArrayList<String> musicName = new ArrayList<>();
+                ArrayList<String> musicUrl = new ArrayList<>();
                 for (music music1 : musicList) {
                     musicName.add(music1.getName());
                     musicUrl.add(music1.getUrl());
@@ -67,8 +67,8 @@ public class musicActivity extends AppCompatActivity {
                 Intent intent = new Intent(context, playActivity.class);
                 intent.putExtra("url", music.getUrl());
                 intent.putExtra("singName", music.getName());
-                intent.putStringArrayListExtra("musicName", (ArrayList<String>) musicName);
-                intent.putStringArrayListExtra("musicUrl", (ArrayList<String>) musicUrl);
+                intent.putStringArrayListExtra("musicName", musicName);
+                intent.putStringArrayListExtra("musicUrl", musicUrl);
                 intent.putExtra("order_num", music.getId());
                 startActivity(intent);
             }
@@ -87,7 +87,6 @@ public class musicActivity extends AppCompatActivity {
                 null, null, null, MediaStore.Audio.Media.DEFAULT_SORT_ORDER);
         // 遍历媒体数据库
         if (cursor.moveToNext()) {
-
             while (!cursor.isAfterLast()) {
                 //歌曲编号
                 int id = cursor.getInt(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media._ID));
@@ -105,7 +104,6 @@ public class musicActivity extends AppCompatActivity {
                 long size = cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.SIZE));
 
                 music music = new music(num++, title, artist, url, album, duration, size);
-                //Log.d("123", "music"+music.toString());
                 musicFiles.add(music);
 
                 if (size > 1024 * 800) {// 大于800k
@@ -116,14 +114,11 @@ public class musicActivity extends AppCompatActivity {
                         artist = "未知";
                     }
 
-                    //music music = new music(id, title, artist, url, album, duration, size);
-                    //Log.d("123", "music"+music.toString());
                     musicFiles.add(music);
                 }
                 cursor.moveToNext();
             }
         }
-        //Log.d("123", musicFiles.toString());
         return musicFiles;
     }
 

@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidAllDemo/WYYUI/app/src/main/res/drawable/select_menu_color.xml" value="0.198" />
         <entry key="..\:/AndroidAllDemo/WYYUI/app/src/main/res/layout/activity_main.xml" value="0.315625" />
+        <entry key="..\:/AndroidAllDemo/WYYUI/app/src/main/res/menu/bottom_navigation.xml" value="0.3338541666666667" />
+        <entry key="..\:/AndroidAllDemo/WYYUI/app/src/main/res/menu/nav_menu1.xml" value="0.3338541666666667" />
       </map>
     </option>
   </component>

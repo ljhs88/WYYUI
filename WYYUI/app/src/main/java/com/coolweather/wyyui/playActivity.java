@@ -2,6 +2,7 @@ package com.coolweather.wyyui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -10,14 +11,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.google.android.material.bottomsheet.BottomSheetDialog;
-
 import java.io.IOException;
 import java.util.List;
 
 public class playActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private MediaPlayer mediaPlayer = new MediaPlayer();
+    private final MediaPlayer mediaPlayer = new MediaPlayer();
     String url;
     String singName;
     private Button button_start;
@@ -27,6 +26,9 @@ public class playActivity extends AppCompatActivity implements View.OnClickListe
     private List<String> musicName;
     private List<String> musicUrl;
     private int order_num;
+    private int STATE = 0;// 0 - 暂停，1 - 开启
+    private Intent intent;
+    private Bundle bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +46,10 @@ public class playActivity extends AppCompatActivity implements View.OnClickListe
         musicName = intent.getStringArrayListExtra("musicName");
         musicUrl = intent.getStringArrayListExtra("musicUrl");
         order_num = intent.getIntExtra("order_num", 0);
-        Log.d("123", url);
-        prepareMediaPlayer(url, singName);
+
+        //prepareMediaPlayer(url, singName);
+
+        prepareText(singName);
 
         button_start.setOnClickListener(this);
         button_up.setOnClickListener(this);
@@ -66,10 +70,64 @@ public class playActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        if (intent != null) {
+            stopService(intent);
+        }
     }
 
+    @SuppressLint({"UseCompatLoadingForDrawables", "NonConstantResourceId"})
     @Override
+    public void onClick(View v) {
+        intent = new Intent("com.coolweather.wyyui.music");
+        intent.setPackage(getBaseContext().getPackageName());
+        bundle = new Bundle();
+        switch (v.getId()) {
+            case R.id.start_button:
+                Log.d("123", "start");
+                if(STATE == 0) {
+                    button_start.setBackground(this.getDrawable(R.drawable.pause));
+                    STATE = 1;
+                } else {
+                    button_start.setBackground(this.getDrawable(R.drawable.start));
+                    STATE = 0;
+                }
+                startService();
+                break;
+            case R.id.up_button:
+                button_start.setBackground(this.getDrawable(R.drawable.start));
+                STATE = 0;
+                order_num = (order_num-1)%musicName.size();
+                url = musicUrl.get(order_num);
+                singName = musicName.get(order_num);
+                prepareText(singName);
+                break;
+            case R.id.down_button:
+                STATE = 0;
+                button_start.setBackground(this.getDrawable(R.drawable.start));
+                order_num = (order_num+1)%musicName.size();
+                url = musicUrl.get(order_num);
+                singName = musicName.get(order_num);
+                prepareText(singName);
+                break;
+        }
+
+    }
+
+    public void startService(){
+        prepareText(singName);
+        bundle.putInt("state", STATE);
+        bundle.putString("url", url);
+        intent.putExtras(bundle);
+        startService(intent);
+    }
+
+    private void prepareText(String singName) {
+        singNameText.setText(singName);
+    }
+
+    /*@Override
     public void onClick(View view) {
+
         switch (view.getId()) {
             case R.id.start_button:
                 if (!mediaPlayer.isPlaying()) {
@@ -101,5 +159,6 @@ public class playActivity extends AppCompatActivity implements View.OnClickListe
                 prepareMediaPlayer(url, singName);
                 break;
         }
-    }
+    }*/
+
 }
